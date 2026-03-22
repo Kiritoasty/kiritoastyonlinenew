@@ -1,75 +1,133 @@
-<!-- ===================== BLOG LISTING PAGE ===================== -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kiritoasty Blog</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<title>Kiritoasty's Blogs</title>
+
+<link href="https://fonts.cdnfonts.com/css/open-dyslexic" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
-body{
-    margin:0;
-    font-family:Inter, sans-serif;
-    background:url('https://files.catbox.moe/vd3jvz.jpg') no-repeat center/cover;
-    color:white;
-    min-height:100vh;
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Open-Dyslexic', sans-serif;
+  background: url('https://files.catbox.moe/vd3jvz.jpg') center/cover no-repeat fixed;
+  color: white;
 }
-.overlay{
-    position:fixed;
-    width:100%;height:100%;
-    backdrop-filter:blur(6px);
+
+/* center card */
+.center-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 480px;
+  padding: 20px;
+  
+  background: rgba(23, 23, 23, 0.35);
+  backdrop-filter: blur(6px);
+  
+  border-radius: 14px;
 }
-.container{
-    max-width:900px;
-    margin:auto;
-    padding:40px 20px;
-    position:relative;
+
+/* TOP TITLE */
+.header {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
 }
-.card{
-    background:rgba(0,0,0,0.45);
-    border:1px solid rgba(255,255,255,0.15);
-    border-radius:16px;
-    padding:20px;
-    margin-bottom:20px;
-    backdrop-filter:blur(16px);
-    transition:0.25s;
+
+/* blog list styling */
+.blog-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-.card:hover{
-    transform:scale(1.02);
-    background:rgba(0,0,0,0.6);
+
+.blog-item {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  transition: background 0.2s;
 }
-a{
-    color:#ffffff;
-    text-decoration:none;
+
+.blog-item:hover {
+  background: rgba(0, 0, 0, 0.45);
 }
-.footer{
-    text-align:center;
-    margin-top:40px;
+
+.blog-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  margin: 0;
+  color: #8aff8a;
+  text-decoration: none;
 }
-.footer a{
-    margin:0 10px;
-    padding:8px 14px;
-    border-radius:10px;
-    background:rgba(255,255,255,0.08);
+
+.blog-title:hover {
+  color: white;
+}
+
+.blog-desc {
+  font-size: 13px;
+  margin-top: 4px;
+  color: #ccc;
+}
+
+/* links */
+.links {
+  margin-top: 15px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.links a {
+  color: #aaa;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+.links a:hover {
+  color: white;
 }
 </style>
 </head>
+
 <body>
-<div class="overlay"></div>
-<div class="container">
-<h1>Blog</h1>
 
-<div class="card">
-    <h2><a href="post.html">Hello world</a></h2>
-    <p>This website has been created! - 3/21/2026</p>
+<div class="center-box">
+
+  <div class="header">Kiritoasty's Blogs</div>
+
+  <ul class="blog-list">
+    <li class="blog-item">
+      <a href="https://web.kiritoasty.us/blogs/blog1" class="blog-title">Linux Server Experimentation</a>
+      <p class="blog-desc">Sharing insights and experiments on Linux server setups, scripting, and networking tricks.</p>
+    </li>
+    <li class="blog-item">
+      <a href="https://web.kiritoasty.us/blogs/blog2" class="blog-title">Kiritoasty Engine Updates</a>
+      <p class="blog-desc">Updates and development logs for my personal engine project.</p>
+    </li>
+    <li class="blog-item">
+      <a href="https://web.kiritoasty.us/blogs/blog3" class="blog-title">ToastyOS (WIP)</a>
+      <p class="blog-desc">A sneak peek into my operating system project and its progress.</p>
+    </li>
+    <li class="blog-item">
+      <a href="https://web.kiritoasty.us/blogs/blog4" class="blog-title">Web Development Experiments</a>
+      <p class="blog-desc">Showcasing personal website experiments and creative coding adventures.</p>
+    </li>
+  </ul>
+
+  <div class="links">
+    <a href="https://web.kiritoasty.us">home</a>
+    <a href="https://web.kiritoasty.us/blogs/">blogs</a>
+  </div>
+
 </div>
 
-
-<div class="footer">
-    <a href="https://web.kiritoasty.us">Home page</a> 
-</div>
-
-</div>
 </body>
 </html>
-
