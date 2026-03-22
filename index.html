@@ -107,26 +107,25 @@ body {
 
 <script>
 const terminal = document.getElementById("terminal");
-const input = document.getElementById("input");
 
 const commands = {
   help: () => "about projects contact clear",
-  about: () => "you want to know about me, kiritoasty? i'm in the mbti of entp-a and i'm very good at defending others, i have hobbies like occasional video editing, web development, node programming, and more, and i'm the owner of my friend group. ",
-  projects: () => "linux server experimentation are alot of my projects, but my other projects are kiritoasty engine, toastyos (wip), and all of my websites, including meowl.website (heh)",
+  about: () => "you want to know about me, kiritoasty? i'm in the mbti of entp-a and i'm very good at defending others, i have hobbies like occasional video editing, web development, node programming, and more, and i'm the owner of my friend group.",
+  projects: () => "linux server experimentation are a lot of my projects, but my other projects are kiritoasty engine, toastyos (wip), and all of my websites, including meowl.website (heh)",
   contact: () => "my email is kiritoastyy@gmail.com if you want to contact me.",
-  clear: () => { 
+  clear: () => {
     terminal.innerHTML = "";
     addInputLine();
-    return ""; 
   }
 };
 
 function print(text) {
-  if (text !== "") {
-    const div = document.createElement("div");
-    div.textContent = text;
-    terminal.appendChild(div);
-  }
+  if (!text) return;
+
+  const div = document.createElement("div");
+  div.textContent = text;
+  terminal.appendChild(div);
+
   terminal.scrollTop = terminal.scrollHeight;
 }
 
@@ -136,36 +135,41 @@ function addInputLine() {
 
   const prompt = document.createElement("span");
   prompt.className = "prompt";
-  prompt.textContent = "user@site:~$";
+  prompt.textContent = "user@site:~$ ";
 
-  const newInput = document.createElement("input");
-  newInput.className = "terminal-input";
+  const input = document.createElement("input");
+  input.className = "terminal-input";
 
   line.appendChild(prompt);
-  line.appendChild(newInput);
+  line.appendChild(input);
   terminal.appendChild(line);
 
-  newInput.focus();
+  input.focus();
 
-  newInput.addEventListener("keydown", handleInput);
-}
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      const value = input.value.trim().toLowerCase();
 
-function handleInput(e) {
-  if (e.key === "Enter") {
-    const value = e.target.value.trim().toLowerCase();
-    e.target.disabled = true;
+      // Replace input with static text (so it doesn't duplicate)
+      const text = document.createElement("span");
+      text.textContent = value;
 
-    print("user@site:~$ " + value);
+      line.removeChild(input);
+      line.appendChild(text);
 
-    if (commands[value]) {
-      print(commands[value]());
-    } else {
-      print("unknown command");
+      if (commands[value]) {
+        const result = commands[value]();
+        if (result) print(result);
+      } else {
+        print("unknown command");
+      }
+
+      addInputLine();
     }
-
-    addInputLine();
-  }
+  });
 }
+
+// click to focus latest input
 terminal.addEventListener("click", () => {
   const inputs = terminal.querySelectorAll("input");
   if (inputs.length > 0) {
@@ -173,8 +177,8 @@ terminal.addEventListener("click", () => {
   }
 });
 
-// initial handler
-input.addEventListener("keydown", handleInput);
+// start terminal
+addInputLine();
 </script>
 
 </body>
