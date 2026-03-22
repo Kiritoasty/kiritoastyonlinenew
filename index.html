@@ -3,202 +3,178 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kiritoasty.online</title>
 
-<!-- OpenDyslexic -->
+<title>Kiritoasty's Corner</title>
+
 <link href="https://fonts.cdnfonts.com/css/open-dyslexic" rel="stylesheet">
-
-<!-- Mono font for terminal -->
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-* {margin:0;padding:0;box-sizing:border-box;}
-
 body {
-    height:100vh;
-    background:url('https://files.catbox.moe/vd3jvz.jpg') no-repeat center/cover;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-    font-family:'Open-Dyslexic', sans-serif;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Open-Dyslexic', sans-serif;
+  background: url('https://files.catbox.moe/vd3jvz.jpg') center/cover no-repeat fixed;
+  color: white;
+}
+.center-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 420px;
+  padding: 20px;
+  
+  background: rgba(23, 23, 23, 0.35);
+  backdrop-filter: blur(6px);
+  
+  border-radius: 14px;
 }
 
-/* subtle overlay pulse */
-.bg-overlay{
-    position:absolute;
-    width:100%;height:100%;
-    backdrop-filter:blur(3px);
-    animation:pulse 10s ease-in-out infinite;
-}
-@keyframes pulse{
-    0%,100%{backdrop-filter:blur(3px)}
-    50%{backdrop-filter:blur(7px)}
+.header {
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
-/* glass card */
-.glass{
-    position:relative;
-    width:520px;
-    padding:30px;
-    border-radius:24px;
-    background:rgba(0,0,0,0.45);
-    backdrop-filter:blur(22px);
-    border:1px solid rgba(255,255,255,0.15);
-    box-shadow:0 0 40px rgba(0,0,0,0.6);
-    animation:float 6s ease-in-out infinite;
-    transition:transform 0.1s ease;
-    color:white;
+.terminal {
+  background: #0f0f0f;
+  border-radius: 10px;
+  padding: 15px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+  height: 220px;
+  overflow-y: auto;
+  cursor: text;
+}
+.line {
+  display: flex;
+}
+.prompt {
+  color: #8aff8a;
+  margin-right: 6px;
+  white-space: nowrap;
+}
+.terminal-input {
+  background: none;
+  border: none;
+  color: white;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+  outline: none;
+  width: 100%;
+}
+.links {
+  margin-top: 10px;
+  font-size: 13px;
 }
 
-/* glow effect */
-.glass::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    border-radius:24px;
-    background:linear-gradient(120deg, rgba(120,120,255,0.15), rgba(255,120,255,0.15));
-    opacity:0.6;
-    filter:blur(20px);
-    z-index:-1;
+.links a {
+  color: #aaa;
+  text-decoration: none;
+  margin-right: 10px;
 }
 
-@keyframes float{
-    0%{transform:translateY(0px)}
-    50%{transform:translateY(-12px)}
-    100%{transform:translateY(0px)}
+.links a:hover {
+  color: white;
 }
-
-h1{
-    text-align:center;
-    font-weight:600;
-    margin-bottom:8px;
-    color:white;
-}
-
-p{
-    text-align:center;
-    opacity:0.85;
-    margin-bottom:20px;
-    color:white;
-}
-
-/* terminal */
-.terminal{
-    background:rgba(0,0,0,0.45);
-    border-radius:14px;
-    padding:15px;
-    font-family:'JetBrains Mono', monospace;
-    font-size:14px;
-    color:#d1d1ff;
-    height:220px;
-    overflow-y:auto;
-}
-
-.line{margin-bottom:6px;}
-.prompt{color:#8be9fd;}
-.cmd{color:#50fa7b;}
-
-.input-line{
-    display:flex;
-}
-
-input{
-    background:none;
-    border:none;
-    outline:none;
-    color:white;
-    font-family:'JetBrains Mono', monospace;
-    flex:1;
-}
-
-/* links */
-.links{
-    margin-top:15px;
-}
-.links a{
-    display:inline-block;
-    margin:6px;
-    padding:8px 14px;
-    border-radius:12px;
-    background:rgba(255,255,255,0.08);
-    text-decoration:none;
-    color:white;
-    transition:0.25s;
-}
-.links a:hover{
-    background:rgba(255,255,255,0.25);
-    transform:scale(1.08);
-}
-
 </style>
 </head>
+
 <body>
-<div class="bg-overlay"></div>
 
-<div class="glass" id="card">
-    <h1>Kiritoasty.online</h1>
-    <p>Linux, servers, and blogs power me</p>
+<div class="center-box">
 
-    <div class="terminal" id="terminal">
-        <div class="line"><span class="prompt">user@site:~$</span> <span class="cmd">welcome</span></div>
-        <div class="line">type <b>help</b> to see commands</div>
+  <div class="header">Kiritoasty's Corner</div>
+
+  <div class="terminal" id="terminal">
+    <div>> type "help"</div>
+
+    <div class="line">
+      <span class="prompt">user@site:~$</span>
+      <input id="input" class="terminal-input" autofocus>
     </div>
+  </div>
 
-    <div class="input-line">
-        <span class="prompt">></span>
-        <input id="input" autocomplete="off" autofocus>
-    </div>
+  <div class="links">
+    <a href="https://web.kiritoasty.us">home</a>
+    <a href="https://web.kiritoasty.us/blogs/">blogs</a>
+  </div>
 
-    <div class="links">
-        <a href="blogs">Blogs</a>
-    </div>
 </div>
 
 <script>
-// terminal logic
-const input = document.getElementById('input');
-const terminal = document.getElementById('terminal');
+const terminal = document.getElementById("terminal");
+const input = document.getElementById("input");
 
 const commands = {
-    help: `commands: about, projects, contact, clear`,
-
-    about: `do YOU want to know about me as kiritoasty? well, here you are!
-I have friends such as renten, zuma, scaling, floatz, rewindees, and more!
-I'm a privacy oriented person. I use tools like proton vpn, and is against most of age verification from tech.
-I'm a web developer, node programmer.`,
-
-    projects: `kiritoasty engine, ToastyOS (wip), literally all of my websites`,
-
-    contact: `email: kiritoastyy@gmail.com`,
+  help: () => "about projects contact clear",
+  about: () => "you want to know about me, kiritoasty? i'm in the mbti of entp-a and i'm very good at defending others, i have hobbies like occasional video editing, web development, node programming, and more, and i'm the owner of my friend group. ",
+  projects: () => "linux server experimentation are alot of my projects, but my other projects are kiritoasty engine, toastyos (wip), and all of my websites, including meowl.website (heh)",
+  contact: () => "my email is kiritoastyy@gmail.com if you want to contact me.",
+  clear: () => { 
+    terminal.innerHTML = "";
+    addInputLine();
+    return ""; 
+  }
 };
 
-input.addEventListener('keydown', e => {
-    if(e.key === 'Enter'){
-        const value = input.value.trim();
+function print(text) {
+  if (text !== "") {
+    const div = document.createElement("div");
+    div.textContent = text;
+    terminal.appendChild(div);
+  }
+  terminal.scrollTop = terminal.scrollHeight;
+}
 
-        terminal.innerHTML += `<div class="line"><span class="prompt">></span> ${value}</div>`;
+function addInputLine() {
+  const line = document.createElement("div");
+  line.className = "line";
 
-        if(value === 'clear'){
-            terminal.innerHTML = '';
-        } else if(commands[value]){
-            terminal.innerHTML += `<div class="line">${commands[value]}</div>`;
-        } else {
-            terminal.innerHTML += `<div class="line">command not found</div>`;
-        }
+  const prompt = document.createElement("span");
+  prompt.className = "prompt";
+  prompt.textContent = "user@site:~$";
 
-        terminal.scrollTop = terminal.scrollHeight;
-        input.value = '';
+  const newInput = document.createElement("input");
+  newInput.className = "terminal-input";
+
+  line.appendChild(prompt);
+  line.appendChild(newInput);
+  terminal.appendChild(line);
+
+  newInput.focus();
+
+  newInput.addEventListener("keydown", handleInput);
+}
+
+function handleInput(e) {
+  if (e.key === "Enter") {
+    const value = e.target.value.trim().toLowerCase();
+    e.target.disabled = true;
+
+    print("user@site:~$ " + value);
+
+    if (commands[value]) {
+      print(commands[value]());
+    } else {
+      print("unknown command");
     }
+
+    addInputLine();
+  }
+}
+terminal.addEventListener("click", () => {
+  const inputs = terminal.querySelectorAll("input");
+  if (inputs.length > 0) {
+    inputs[inputs.length - 1].focus();
+  }
 });
 
-// parallax
-const card = document.getElementById('card');
-document.addEventListener('mousemove', (e)=>{
-    const x = (window.innerWidth/2 - e.clientX)/25;
-    const y = (window.innerHeight/2 - e.clientY)/25;
-    card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-});
+// initial handler
+input.addEventListener("keydown", handleInput);
 </script>
 
 </body>
