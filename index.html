@@ -126,7 +126,6 @@ function print(text) {
 }
 
 function addInputLine() {
-  // 🧹 Ensure no extra active inputs exist
   const oldInputs = terminal.querySelectorAll("input");
   oldInputs.forEach(input => input.disabled = true);
 
@@ -150,14 +149,12 @@ function addInputLine() {
     if (e.key === "Enter") {
       const value = input.value.trim().toLowerCase();
 
-      // Turn input into plain text (no duplication)
       const text = document.createElement("span");
       text.textContent = value;
 
       line.removeChild(input);
       line.appendChild(text);
 
-      // 🧼 CLEAR (handled here ONLY)
       if (value === "clear") {
         terminal.innerHTML = "";
         addInputLine();
@@ -176,7 +173,6 @@ function addInputLine() {
   });
 }
 
-// click anywhere to focus latest input
 terminal.addEventListener("click", () => {
   const inputs = terminal.querySelectorAll("input");
   if (inputs.length > 0) {
@@ -184,7 +180,6 @@ terminal.addEventListener("click", () => {
   }
 });
 
-// 🚀 start fresh (IMPORTANT: no pre-existing input in HTML)
 terminal.innerHTML = "";
 addInputLine();
 </script>
